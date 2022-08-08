@@ -1,0 +1,438 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width:100%;
+    background-color: black;
+}
+
+.App-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width:95%;
+    height:95%;
+    background-color: rgb(228, 226, 226);
+}
+
+
+/* PAGES CONTAINERS */
+.Home-Page{
+    display: flex;
+    flex-direction: row;
+
+    /* inherita do app container parent */
+    width:100%;
+    height:100%;
+    background-color: rgb(228, 226, 226);
+    border:1px solid red;
+}
+
+.AddNote-Page{
+    display: flex;
+    flex-direction: row;
+
+    /* inherita do app container parent */
+    width:100%;
+    height:100%;
+    background-color: rgb(228, 226, 226);
+    border:1px solid red;
+}
+
+/* ############################################################################################ */
+/* ############################################################################################ */
+/* ####################             LEFT  SIDE                    #################### */
+
+.Left-Side{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 100%;
+    width:25%;
+    border:1px solid black;
+}
+
+.Add-Note-Button{
+    cursor: pointer;
+    margin-top: 17px;
+    height:70px;
+    width:90%;
+    border-radius: 10px;
+    border:0;
+    background-color: brown;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(228, 226, 226);
+}
+
+.Add-Note-Button:hover{
+    transition-duration: 0.1s;
+    background-color: rgb(109, 27, 27);
+}
+
+.Add-Note-Button:active{
+    transform: translateY(1px);
+}
+
+.Notes-Container{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 17px;
+    width:100%;
+    flex:1;
+    overflow: auto;
+    border: 1px solid yellow;
+}
+
+.Note-Box{
+    display: flex;
+    flex-direction: column;
+    
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    width:90%;
+    height:100px;
+    font-family: 'Lato',sans-serif;
+    /* BORDER NECESSARIA */
+    
+}
+
+.Note-Title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-bottom: 2px solid brown;
+    width:100%;
+    height:28px;
+    font-weight: 700;
+    font-size: 27px;
+    /*
+    border:1px solid black;
+    */
+}
+
+.Note-Content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    flex: 1;
+    /*
+    border:1px solid black;
+    */
+}
+
+.Note-Date{
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    height:20px;
+    /*
+    border:1px solid black;
+    */
+}
+
+.Note-Date > span{
+    margin-right: 20px;
+}
+
+.Note-Box:hover{
+    background-color: rgb(211, 210, 210);
+}
+
+
+/* Scrollbar Width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+/* Background */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px black;
+    border-radius: 10px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+    background: brown;
+    border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ############################################################################################ */
+/* ############################################################################################ */
+/* ####################            RIGHT  SIDE                    #################### */
+
+.Right-Side{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    color:black;
+    height: 100%;
+    flex:1;
+    /* fill right side */
+    font-family: 'Lato',sans-serif;
+    border:1px solid yellow;
+}
+
+
+
+
+
+/* CASE ADD NOTE PAGE */
+
+.Create-Note-Title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height:45px;
+}
+
+.Create-Note-Title > h3{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.Create-Note-Input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width:100%;
+    height:60px;
+    border:1px solid black;
+}
+
+.Create-Note-Input > input{
+    width:70%;
+    border:0;
+    outline: none;
+    border-bottom: 2px solid brown;
+}
+
+.Create-Note-Checkbox{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    height:40px;
+    width:100%;
+    border:1px solid black;
+}
+
+.Create-Note-Checkbox > input{
+    margin-left: 15%;
+}
+
+.Create-Note-Checkbox > label{
+    margin-left: 1%;
+}
+
+
+.Note-Content-Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    width:100%;
+    height:45%;
+    border:1px solid blue;
+}
+
+.Note-Textarea{
+
+    margin-top: 15px;
+    height:350px;
+    width:80%;
+    resize: none;
+    border:0;
+    font-size: 18px;
+    outline: 1px solid brown;
+}
+
+.Emoji-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+
+    width:100%;
+    height:10%;
+    border:1px solid black;
+}
+
+.Emoji-Opener{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 17%;
+
+    background-image: url("/resources/Emoji.png");
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+    width:40px;
+    height:35px;
+    border:1px solid yellow;
+}
+
+.Emoji-Menu{
+    position: absolute;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    
+    background-color: brown;
+    margin-left: 15%;
+    width:40%;
+    height:20%;
+    border:1px solid black;
+}
+
+
+
+.Emoji-Button{
+    display:inline-block;
+
+    cursor: pointer;
+    background-color: whitesmoke;
+    margin: 2px;
+    border-radius: 5px;
+    border:1px solid black;
+    height:24px;
+    width:35px;
+}
+
+.Options-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    width:100%;
+    height:180px;
+    border:1px solid black;
+}
+
+.Font-Container{
+
+    height:100%;
+    width:40%;
+    border:1px solid black;
+}
+
+.Font-Container > button{
+    cursor: pointer;
+    border-radius: 10px;
+    border:0;
+    background-color: brown;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color:whitesmoke;
+}
+
+#Decrease-Font{
+    margin: 10px;
+}
+
+#Increase-Font{
+    margin: 10px;
+}
+
+.Font-Container > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 26px;
+    height:50px;
+    width:50px;
+    border:1px solid black;
+}
+
+.Font-Container > #Font-Limit{
+    /*
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    */
+
+    position: absolute;
+    margin-bottom: 6%;
+}
+
+
+.Create-Note-Button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width:100%;
+    flex:1;
+    border:1px solid black;
+}
+
+.Create-Note-Button > button{
+    cursor: pointer;
+    margin-top: 17px;
+    height:70px;
+    width:60%;
+    border-radius: 10px;
+    border:0;
+    background-color: brown;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(228, 226, 226);
+}
+
+.Create-Note-Button > button:hover{
+    transition-duration: 0.1s;
+    background-color: rgb(109, 27, 27);
+}
+
+.Create-Note-Button > button:active{
+    transform: translateY(1px);
+}
