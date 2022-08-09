@@ -91,7 +91,6 @@ body{
     margin-top: 17px;
     width:100%;
     flex:1;
-    overflow: auto;
     border: 1px solid yellow;
 }
 
@@ -106,8 +105,7 @@ body{
     width:90%;
     height:100px;
     font-family: 'Lato',sans-serif;
-    /* BORDER NECESSARIA */
-    
+    /* BORDER NECESSARIA */    
 }
 
 .Note-Title{
@@ -120,21 +118,52 @@ body{
     height:28px;
     font-weight: 700;
     font-size: 27px;
-    /*
-    border:1px solid black;
-    */
+    
+  
+    
+}
+
+.Hidden-Title{
+    display:none;
+}
+
+.Hidden-Content{
+    display:none;
+}
+
+.Note-Title > #important{
+    visibility: hidden;
+    flex-direction: row;
+    justify-self: flex-end;
+    align-self: center;
+    margin-left: auto;
+    margin-right: 2%;
+    border-radius: 10px;
+    height:20px;
+    width:20px;
+    background-color: brown;
 }
 
 .Note-Content{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
 
     width: 100%;
-    flex: 1;
-    /*
+    flex:1;
+    
     border:1px solid black;
-    */
+    
+}
+
+.Note-Content > span{
+    display: flex;
+    word-break: break-all;
+    
+    height:65%;
+    width:100%;
+    margin-right: 20px;
+    border: 1px solid yellow;
 }
 
 .Note-Date{
@@ -278,7 +307,7 @@ body{
 }
 
 .Note-Textarea{
-
+    text-align: left;
     margin-top: 15px;
     height:350px;
     width:80%;
@@ -304,12 +333,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 17%;
+    margin-left: 140px;
 
     background-image: url("/resources/Emoji.png");
     background-position: center center;
     background-size: cover;
     cursor: pointer;
+    font-family: 'Lato',sans-serif;
+    font-size: 29px;
+    font-weight: 700;
     width:40px;
     height:35px;
     border:1px solid yellow;
@@ -317,15 +349,15 @@ body{
 
 .Emoji-Menu{
     position: absolute;
-    display: flex;
+    display: none;
     flex-direction:row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     align-content: flex-start;
-    
+
     background-color: brown;
-    margin-left: 15%;
+    margin-left: 180px;
     width:40%;
     height:20%;
     border:1px solid black;
@@ -345,6 +377,13 @@ body{
     width:35px;
 }
 
+
+
+
+
+
+
+
 .Options-Container{
     display: flex;
     flex-direction: row;
@@ -353,54 +392,190 @@ body{
 
     width:100%;
     height:180px;
-    border:1px solid black;
+    border:1px solid red;
 }
 
 .Font-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
+    width:35%;
     height:100%;
-    width:40%;
+}
+
+#Font-Limit{
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+
+
+    animation: 0.3s anim-lineUp ease-out infinite;
+    animation-iteration-count: 1;
+    animation-play-state:paused;
+
+    font-size: 26px;
+    font-weight: 700;
+    height:40%;
+    width:100%;
+    border:1px solid brown;
+}
+@keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+#Font-Adjusters{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    flex:1;
+    width:100%;
     border:1px solid black;
 }
 
-.Font-Container > button{
+#Font-Adjusters > button{
     cursor: pointer;
+    height:30px;
+    width:190px;
     border-radius: 10px;
     border:0;
     background-color: brown;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    color:whitesmoke;
+    font-size: 17px;
+    color: rgb(228, 226, 226);
 }
 
-#Decrease-Font{
-    margin: 10px;
+#Font-Adjusters > button:hover{
+    transition-duration: 0.1s;
+    background-color: rgb(109, 27, 27);
 }
 
-#Increase-Font{
-    margin: 10px;
+#Font-Adjusters > button:active{
+    transform: translateY(1px);
 }
 
-.Font-Container > span{
+#Font-Adjusters > span{
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: 26px;
-    height:50px;
+    font-size:21px;
+    font-weight: 700;
+    height:40px;
     width:50px;
     border:1px solid black;
 }
 
-.Font-Container > #Font-Limit{
-    /*
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    */
+.TextOptions-Container{
+    display: flex;
+    flex-direction: column;
 
-    position: absolute;
-    margin-bottom: 6%;
+    width:35%;
+    height:100%;
+    border:1px solid green;
+}
+
+.TextAlign{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height:40%;
+    width:100%;
+    border:1px solid black;
+}
+
+.TextAlign > button:hover{
+    cursor: pointer;
+    transition-duration: 0.1s;
+    background-color: whitesmoke;
+}
+
+.TextAlign > button:active{
+    transform: translateY(1px);
+}
+
+#Align-Left{
+    height:40px;
+    width:40px;
+    margin: 10px;
+}
+#Align-Left > img{
+    height: 100%;
+    width: 100%;
+}
+#Align-Center{
+    height:40px;
+    width:40px;
+    margin: 10px;
+}
+#Align-Center > img{
+    height: 100%;
+    width: 100%;
+}
+#Align-Right{
+    height:40px;
+    width:40px;
+    margin: 10px;
+}
+#Align-Right > img{
+    height: 100%;
+    width: 100%;
+}
+
+.FontWeight{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    flex:1;
+    width:100%;
+    border:1px solid black;
+}
+
+.FontWeight > button:hover{
+    cursor: pointer;
+    transition-duration: 0.1s;
+    background-color: whitesmoke;
+}
+
+.FontWeight > button:active{
+    transform: translateY(1px);
+}
+
+
+#Weight-300{
+    font-weight: 300;
+    margin: 10px;
+}
+#Weight-500{
+    font-weight: 500;
+    margin: 10px;
+}
+#Weight-700{
+    font-weight: 700;
+    margin: 10px;
 }
 
 

@@ -10,7 +10,7 @@
     <Link rel="Stylesheet" href="css/Normalize.css">
     <Link rel="preconnect" href="https://fonts.googleapis.com">
     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <Link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <Link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,15 +18,17 @@
         <div class="Home-Page">
             <div class="Left-Side">
                 <button id="Add-Note" class="Add-Note-Button">Add Note</button>
-                <div class="Notes-Container">
-                    <div class="Note-Box">
-                        <div class="Note-Title"><span>title title</span></div>
+                <div id="Notes-Container" class="Notes-Container">
+                    <!--
+                    <div id="Note-Box" class="Note-Box">
+                        <div class="Note-Title"><span>title title</span><span id="important"></span></div>
                         <div class="Note-Content"><span>content content content content content content content content </span></div>
                         <div class="Note-Date"><span>Thursday, 7 August 2022 at 21:57</span></div>
                     </div>
+                    -->
                 </div>
             </div>
-            <div id="Right-Side"class="Right-Side">
+            <div id="Right-Side" class="Right-Side">
                 <div class="Create-Note-Title">
                     <h3>Note Title:</h3>
                 </div>
@@ -103,11 +105,24 @@
                 </div>
                 <div class="Options-Container">
                     <div class="Font-Container">
-                        <!--                        <button id="Decrease-Font">Decrease Fontsize</button>
-                        <span id="Current-FontSize"></span>
-                        <h3 id="Font-Limit">Font size limit of 50 reached!</h3>
-                        <button id="Increase-Font">Increase Fontsize</button>
-                        -->
+                        <div id="Font-Limit">Font size limit of 50 reached!</div>
+                        <div id="Font-Adjusters">
+                            <button id="Decrease-Font">Decrease Fontsize</button>
+                            <span id="Current-FontSize"></span>
+                            <button id="Increase-Font">Increase Fontsize</button>
+                        </div>
+                    </div>
+                    <div class="TextOptions-Container">
+                        <div class="TextAlign">
+                            <button id="Align-Left"><img src="/resources/Align-Left.png"></button>
+                            <button id="Align-Center"><img src="/resources/Align-Center.png"></button>
+                            <button id="Align-Right"><img src="/resources/Align-Right.png"></button>
+                        </div>
+                        <div class="FontWeight">
+                            <button id="Weight-300">Weight 300</button>
+                            <button id="Weight-500">Weight 500</button>
+                            <button id="Weight-700">Weight 700</button>
+                        </div>
                     </div>
                 </div>
                 <div class="Create-Note-Button">
@@ -117,6 +132,7 @@
         </div>
     </div>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/EventsHandler.js"></script>
 </body>
 </html>
