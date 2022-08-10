@@ -132,7 +132,7 @@ body{
 }
 
 .Note-Title > #important{
-    visibility: hidden;
+    visibility:hidden;
     flex-direction: row;
     justify-self: flex-end;
     align-self: center;
@@ -412,7 +412,7 @@ body{
     align-items: center;
 
 
-    animation: 0.3s anim-lineUp ease-out infinite;
+    animation: 0.3s SubirMensagem ease-out infinite;
     animation-iteration-count: 1;
     animation-play-state:paused;
 
@@ -422,7 +422,7 @@ body{
     width:100%;
     border:1px solid brown;
 }
-@keyframes anim-lineUp {
+@keyframes SubirMensagem {
     0% {
       opacity: 0;
       transform: translateY(80%);

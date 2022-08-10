@@ -150,14 +150,42 @@ Weight700.addEventListener("click", () =>{
 </div>
 */
 
+function getLocalKeys(){
+
+    var keys = Object.keys(localStorage);
+    return keys;
+}
+
+function MountLocalNotes(){
+
+    let keys = getLocalKeys();
+    for (let i=0;i<keys.length;i++){
+        console.log(localStorage.getItem(keys[i]));
+    }
+    console.log(NotesContainer);
+
+}
+
+
+
 /* jquery selector for id */
 var TypedNoteTitle = $("#Note-Title");
-var ImportantCheckbox = document.querySelector("#Important-Checkbox").checked;
 
 var NotesContainer = document.querySelector("#Notes-Container");
 var CreateNoteButton = document.querySelector("#Create-Note");
 
+if (getLocalKeys().length > 0){
+    var NotesStorageCounter = getLocalKeys().length;
+}else{
+    var NotesStorageCounter = 0;
+}
+
+MountLocalNotes();
+
 CreateNoteButton.addEventListener("click", () =>{
+
+    var ImportantCheckbox = document.querySelector("#Important-Checkbox").checked;
+
     let NoteBox = document.createElement('div');
     NoteBox.classList.add('Note-Box');
     let HiddenTitle = document.createElement('div');
@@ -177,6 +205,7 @@ CreateNoteButton.addEventListener("click", () =>{
     if (ImportantCheckbox == true){
         let ImportantSpan = document.createElement('span');
         ImportantSpan.setAttribute('id','important');
+        ImportantSpan.style.visibility = "visible";
         NoteTitle.appendChild(ImportantSpan);
     }
     let HiddenContent = document.createElement('div');
@@ -195,9 +224,19 @@ CreateNoteButton.addEventListener("click", () =>{
     NoteBox.appendChild(NoteContent);
 
 
-
-
-
     NotesContainer.appendChild(NoteBox);
 
+    NotesStorageCounter += 1;
+
+    var NoteObj = {
+        Important: ImportantCheckbox,
+        HiddenTitle: HiddenTitle.innerText,
+        Title: SlicedTitle,
+        HiddenContent: HiddenContent.innerText,
+        Content: SlicedContent
+    };
+
+    localStorage.setItem(`Note${NotesStorageCounter}`,JSON.stringify(NoteObj));
+
 });
+
