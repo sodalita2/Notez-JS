@@ -131,6 +131,19 @@ body{
     display:none;
 }
 
+.Hidden-FontSize{
+    display: none;
+}
+
+.Hidden-TextAlign{
+    display: none;
+}
+
+.Hidden-FontWeight{
+    display: none;
+}
+
+
 .Note-Title > #important{
     visibility:hidden;
     flex-direction: row;
@@ -314,6 +327,7 @@ body{
     resize: none;
     border:0;
     font-size: 18px;
+    font-weight: 500;
     outline: 1px solid brown;
 }
 

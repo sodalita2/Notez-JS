@@ -115,6 +115,9 @@ var AlignLeftButton = document.querySelector("#Align-Left");
 var AlignCenterButton = document.querySelector("#Align-Center");
 var AlignRightButton = document.querySelector("#Align-Right");
 
+
+/* default value on load */
+NoteTextarea.style.textAlign = "left";
 AlignLeftButton.addEventListener("click", () =>{
     NoteTextarea.style.textAlign = "left";
 });
@@ -129,6 +132,8 @@ var Weight300 = document.querySelector("#Weight-300");
 var Weight500 = document.querySelector("#Weight-500");
 var Weight700 = document.querySelector("#Weight-700");
 
+/* default value on load */
+NoteTextarea.style.fontWeight = "500";
 Weight300.addEventListener("click", () =>{
     NoteTextarea.style.fontWeight = "300";
 });
@@ -149,6 +154,19 @@ Weight700.addEventListener("click", () =>{
     <div class="Note-Date"><span>Thursday, 7 August 2022 at 21:57</span></div>
 </div>
 */
+/*
+var NoteObj = {
+    Important: ImportantCheckbox,
+    HiddenTitle: HiddenTitle.innerText,
+    Title: SlicedTitle,
+    HiddenContent: HiddenContent.innerText,
+    Content: SlicedContent,
+    TextAlign: NoteTextarea.style.textAlign,
+    FontSize: CurrentFontSize.innerText,
+    FontWeight: NoteTextarea.style.fontWeight
+};
+*/
+
 
 function getLocalKeys(){
 
@@ -160,9 +178,53 @@ function MountLocalNotes(){
 
     let keys = getLocalKeys();
     for (let i=0;i<keys.length;i++){
-        console.log(localStorage.getItem(keys[i]));
+        let NoteObj = JSON.parse(localStorage.getItem(keys[i]));
+
+        let NoteBox = document.createElement('div');
+        NoteBox.classList.add('Note-Box');
+        let HiddenTitle = document.createElement('div');
+        HiddenTitle.classList.add('Hidden-Title');
+        HiddenTitle.innerText = NoteObj.HiddenTitle;
+        NoteBox.appendChild(HiddenTitle);
+        let HiddenFontSize = document.createElement('div');
+        HiddenFontSize.classList.add('Hidden-FontSize');
+        HiddenFontSize.innerText = NoteObj.FontSize;
+        NoteBox.appendChild(HiddenFontSize);
+        let HiddenTextAlign = document.createElement('div');
+        HiddenTextAlign.classList.add('Hidden-TextAlign');
+        HiddenTextAlign.innerText = NoteObj.TextAlign;
+        NoteBox.appendChild(HiddenTextAlign);
+        let HiddenFontWeight = document.createElement('div');
+        HiddenFontWeight.classList.add('Hidden-FontWeight');
+        HiddenFontWeight.innerText = NoteObj.FontWeight;
+        NoteBox.appendChild(HiddenFontWeight);
+        let NoteTitle = document.createElement('div');
+        NoteTitle.classList.add('Note-Title');
+        let TitleSpan = document.createElement('span');
+        TitleSpan.innerText = NoteObj.Title;
+        NoteTitle.appendChild(TitleSpan);
+        NoteBox.appendChild(NoteTitle);
+        if (NoteObj.Important == true){
+            let ImportantSpan = document.createElement('span');
+            ImportantSpan.setAttribute('id','important');
+            ImportantSpan.style.visibility = "visible";
+            NoteTitle.appendChild(ImportantSpan);
+        }
+        let HiddenContent = document.createElement('div');
+        HiddenContent.classList.add('Hidden-Content');
+        HiddenContent.innerText = NoteObj.HiddenContent;
+        NoteBox.appendChild(HiddenContent);
+        let NoteContent = document.createElement('div');
+        NoteContent.classList.add("Note-Content");
+        let ContentSpan = document.createElement('span');
+        ContentSpan.innerText = NoteObj.Content;
+        NoteContent.appendChild(ContentSpan);
+        NoteBox.appendChild(NoteContent);
+
+        
+        NotesContainer.appendChild(NoteBox);
     }
-    console.log(NotesContainer);
+    
 
 }
 
@@ -176,11 +238,12 @@ var CreateNoteButton = document.querySelector("#Create-Note");
 
 if (getLocalKeys().length > 0){
     var NotesStorageCounter = getLocalKeys().length;
+    MountLocalNotes();
 }else{
     var NotesStorageCounter = 0;
 }
 
-MountLocalNotes();
+
 
 CreateNoteButton.addEventListener("click", () =>{
 
@@ -192,6 +255,18 @@ CreateNoteButton.addEventListener("click", () =>{
     HiddenTitle.classList.add('Hidden-Title');
     HiddenTitle.innerText = TypedNoteTitle.val();
     NoteBox.appendChild(HiddenTitle);
+    let HiddenFontSize = document.createElement('div');
+    HiddenFontSize.classList.add('Hidden-FontSize');
+    HiddenFontSize.innerText = CurrentFontSize.innerText;
+    NoteBox.appendChild(HiddenFontSize);
+    let HiddenTextAlign = document.createElement('div');
+    HiddenTextAlign.classList.add('Hidden-TextAlign');
+    HiddenTextAlign.innerText = NoteTextarea.style.textAlign;
+    NoteBox.appendChild(HiddenTextAlign);
+    let HiddenFontWeight = document.createElement('div');
+    HiddenFontWeight.classList.add('Hidden-FontWeight');
+    HiddenFontWeight.innerText = NoteTextarea.style.fontWeight;
+    NoteBox.appendChild(HiddenFontWeight);
     let NoteTitle = document.createElement('div');
     NoteTitle.classList.add('Note-Title');
     let TitleSpan = document.createElement('span');
@@ -233,10 +308,14 @@ CreateNoteButton.addEventListener("click", () =>{
         HiddenTitle: HiddenTitle.innerText,
         Title: SlicedTitle,
         HiddenContent: HiddenContent.innerText,
-        Content: SlicedContent
+        Content: SlicedContent,
+        TextAlign: NoteTextarea.style.textAlign,
+        FontSize: CurrentFontSize.innerText,
+        FontWeight: NoteTextarea.style.fontWeight
     };
 
     localStorage.setItem(`Note${NotesStorageCounter}`,JSON.stringify(NoteObj));
+    
 
 });
 
