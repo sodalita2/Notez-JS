@@ -1,19 +1,6 @@
+function ReturnAddNoteBlock(){
 
-var HomePage = document.querySelector("#HomePage");
-
-var AddNoteButton = document.querySelector("#Add-Note");
-
-var RightSideDivOpen = 0;
-
-AddNoteButton.addEventListener("click", () =>{
-
-    RightSideDivOpen += 1;
-
-    if (RightSideDivOpen == 1){
-        let RightSideDiv = document.createElement('div');
-        RightSideDiv.classList.add('Right-Side');
-
-        let AddNoteBlock = `
+    let AddNoteBlock = `
             <div class="Create-Note-Title">
                 <h3>Note Title:</h3>
             </div>
@@ -114,6 +101,137 @@ AddNoteButton.addEventListener("click", () =>{
                 <button id="Create-Note">Create Note</button>
             </div>
         `;
+
+    return AddNoteBlock;
+}
+
+function ReturnNoteBlock(){
+
+    let NoteBlock = `
+            <div class="Create-Note-Title">
+                <h3>Note Title:</h3>
+            </div>
+            <div class="Create-Note-Input">
+                <input id="Note-Title" type="text" class="Note-Title">
+            </div>
+            <div class="Create-Note-Checkbox">
+                <input id="Important-Checkbox" type="checkbox">
+                <label for="Important-Checkbox">Check as important</label>
+            </div>
+            <div class="Note-Content-Container">
+                <textarea id="Note-Textarea" class="Note-Textarea" placeholder="Type note here..."></textarea>
+                <div class="Emoji-Container">
+                    <div id="Emoji-Opener" class="Emoji-Opener"></div>
+                    <div id="Emoji-Menu" class="Emoji-Menu">
+                        <button type="button" class="Emoji-Button">😁</button>
+                        <button type="button" class="Emoji-Button">😂</button>
+                        <button type="button" class="Emoji-Button">😃</button>
+                        <button type="button" class="Emoji-Button">😄</button>
+                        <button type="button" class="Emoji-Button">😅</button>
+                        <button type="button" class="Emoji-Button">😆</button>
+                        <button type="button" class="Emoji-Button">😉</button>
+                        <button type="button" class="Emoji-Button">😊</button>
+                        <button type="button" class="Emoji-Button">😋</button>
+                        <button type="button" class="Emoji-Button">😌</button>
+                        <button type="button" class="Emoji-Button">😍</button>
+                        <button type="button" class="Emoji-Button">😏</button>
+                        <button type="button" class="Emoji-Button">😒</button>
+                        <button type="button" class="Emoji-Button">😓</button>
+                        <button type="button" class="Emoji-Button">😔</button>
+                        <button type="button" class="Emoji-Button">😖</button>
+                        <button type="button" class="Emoji-Button">😘</button>
+                        <button type="button" class="Emoji-Button">😚</button>
+                        <button type="button" class="Emoji-Button">😜</button>
+                        <button type="button" class="Emoji-Button">😝</button>
+                        <button type="button" class="Emoji-Button">😞</button>
+                        <button type="button" class="Emoji-Button">😠</button>
+                        <button type="button" class="Emoji-Button">😢</button>
+                        <button type="button" class="Emoji-Button">😤</button>
+                        <button type="button" class="Emoji-Button">😥</button>
+                        <button type="button" class="Emoji-Button">😨</button>
+                        <button type="button" class="Emoji-Button">😩</button>
+                        <button type="button" class="Emoji-Button">😪</button>
+                        <button type="button" class="Emoji-Button">😫</button>
+                        <button type="button" class="Emoji-Button">😭</button>
+                        <button type="button" class="Emoji-Button">😰</button>
+                        <button type="button" class="Emoji-Button">😱</button>
+                        <button type="button" class="Emoji-Button">😲</button>
+                        <button type="button" class="Emoji-Button">😳</button>
+                        <button type="button" class="Emoji-Button">😵</button>
+                        <button type="button" class="Emoji-Button">😷</button>
+                        <button type="button" class="Emoji-Button">😸</button>
+                        <button type="button" class="Emoji-Button">😹</button>
+                        <button type="button" class="Emoji-Button">😺</button>
+                        <button type="button" class="Emoji-Button">😻</button>
+                        <button type="button" class="Emoji-Button">😼</button>
+                        <button type="button" class="Emoji-Button">😽</button>
+                        <button type="button" class="Emoji-Button">😾</button>
+                        <button type="button" class="Emoji-Button">😿</button>
+                        <button type="button" class="Emoji-Button">🙀</button>
+                        <button type="button" class="Emoji-Button">🙅</button>
+                        <button type="button" class="Emoji-Button">🙆</button>
+                        <button type="button" class="Emoji-Button">🙇</button>
+                        <button type="button" class="Emoji-Button">🙈</button>
+                        <button type="button" class="Emoji-Button">🙉</button>
+                        <button type="button" class="Emoji-Button">🙊</button>
+                        <button type="button" class="Emoji-Button">🙋</button>
+                        <button type="button" class="Emoji-Button">🙌</button>
+                        <button type="button" class="Emoji-Button">🙍</button>
+                        <button type="button" class="Emoji-Button">🙎</button>
+                        <button type="button" class="Emoji-Button">🙏</button>
+                    </div>
+                </div>
+            </div>
+            <div class="Options-Container">
+                <div class="Font-Container">
+                    <div id="Font-Limit">Font size limit of 50 reached!</div>
+                    <div id="Font-Adjusters">
+                        <button id="Decrease-Font">Decrease Fontsize</button>
+                        <span id="Current-FontSize"></span>
+                        <button id="Increase-Font">Increase Fontsize</button>
+                    </div>
+                </div>
+                <div class="TextOptions-Container">
+                    <div class="TextAlign">
+                        <button id="Align-Left"><img src="/resources/Align-Left.png"></button>
+                        <button id="Align-Center"><img src="/resources/Align-Center.png"></button>
+                        <button id="Align-Right"><img src="/resources/Align-Right.png"></button>
+                    </div>
+                    <div class="FontWeight">
+                        <button id="Weight-300">Weight 300</button>
+                        <button id="Weight-500">Weight 500</button>
+                        <button id="Weight-700">Weight 700</button>
+                    </div>
+                </div>
+            </div>
+            <div class="Create-Note-Button">
+                <button id="Create-Note">Create Note</button>
+            </div>
+        `;
+
+    return NoteBlock;
+}
+
+
+
+var HomePage = document.querySelector("#HomePage");
+
+var AddNoteButton = document.querySelector("#Add-Note");
+
+var RightSideDivOpen = 0;
+
+AddNoteButton.addEventListener("click", () =>{
+
+    RightSideDivOpen += 1;
+
+    if (RightSideDivOpen == 1){
+        let RightSideDiv = document.createElement('div');
+        RightSideDiv.classList.add('Right-Side');
+        RightSideDiv.setAttribute('id','Right-Side');
+
+
+        let AddNoteBlock = ReturnAddNoteBlock();
+        
         RightSideDiv.innerHTML = AddNoteBlock;
         HomePage.appendChild(RightSideDiv);
     }
@@ -340,10 +458,15 @@ AddNoteButton.addEventListener("click", () =>{
 
         localStorage.setItem(`Note${NotesStorageCounter}`,JSON.stringify(NoteObj));
 
-        RightSideDiv.remove();
+
+        $("#Right-Side").remove();
 
         NoteBox.addEventListener("click", () =>{
-            console.log(RightSideDiv);
+            let RightSideDiv = document.createElement('div');
+            RightSideDiv.classList.add('Right-Side');
+            RightSideDiv.setAttribute('id','Right-Side');
+            
+            console.log(NoteBox.lastChild);
         });
 
 
@@ -471,6 +594,31 @@ function MountLocalNotes(){
 
         
         NotesContainer.appendChild(NoteBox);
+
+
+        NoteBox.addEventListener("click", () =>{
+            let RightSideDiv = document.createElement('div');
+            RightSideDiv.classList.add('Right-Side');
+            RightSideDiv.setAttribute('id','Right-Side');
+            
+            let NoteBlock = ReturnNoteBlock();
+            RightSideDiv.innerHTML = NoteBlock;
+            /*
+            document.getElementById("#Note-Title").innerText = HiddenTitle.innerText;
+            document.getElementById("#Note-Textarea").innerText = HiddenContent.innerText;
+            */
+            
+            RightSideDiv.children[1].lastElementChild.value = HiddenTitle.innerText;
+            RightSideDiv.children[3].firstElementChild.value = HiddenContent.innerText;
+            RightSideDiv.children[3].firstElementChild.style.fontSize = HiddenFontSize.innerText;
+            RightSideDiv.children[3].firstElementChild.style.textAlign = HiddenTextAlign.innerText;
+            RightSideDiv.children[3].firstElementChild.style.fontWeight = HiddenFontWeight.innerText;
+            RightSideDiv.children[4].firstElementChild.lastElementChild.children[1].innerText = HiddenFontSize.innerText;
+
+            
+            
+            HomePage.append(RightSideDiv);
+        });
     }
     
 
