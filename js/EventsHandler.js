@@ -462,11 +462,24 @@ AddNoteButton.addEventListener("click", () =>{
         $("#Right-Side").remove();
 
         NoteBox.addEventListener("click", () =>{
+            $("#Right-Side").remove();
+
             let RightSideDiv = document.createElement('div');
             RightSideDiv.classList.add('Right-Side');
             RightSideDiv.setAttribute('id','Right-Side');
             
-            console.log(NoteBox.lastChild);
+            let NoteBlock = ReturnNoteBlock();
+            RightSideDiv.innerHTML = NoteBlock;
+            
+            RightSideDiv.children[1].lastElementChild.value = HiddenTitle.innerText;
+            RightSideDiv.children[3].firstElementChild.value = HiddenContent.innerText;
+            RightSideDiv.children[3].firstElementChild.style.fontSize = HiddenFontSize.innerText;
+            RightSideDiv.children[3].firstElementChild.style.textAlign = HiddenTextAlign.innerText;
+            RightSideDiv.children[3].firstElementChild.style.fontWeight = HiddenFontWeight.innerText;
+            RightSideDiv.children[4].firstElementChild.lastElementChild.children[1].innerText = HiddenFontSize.innerText;
+
+            
+            HomePage.append(RightSideDiv);
         });
 
 
@@ -597,6 +610,8 @@ function MountLocalNotes(){
 
 
         NoteBox.addEventListener("click", () =>{
+            $("#Right-Side").remove();
+
             let RightSideDiv = document.createElement('div');
             RightSideDiv.classList.add('Right-Side');
             RightSideDiv.setAttribute('id','Right-Side');
