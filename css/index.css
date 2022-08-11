@@ -602,8 +602,30 @@ body{
     flex:1;
     border:1px solid black;
 }
+.Edit-Note-Button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width:100%;
+    flex:1;
+    border:1px solid black;
+}
 
 .Create-Note-Button > button{
+    cursor: pointer;
+    margin-top: 17px;
+    height:70px;
+    width:60%;
+    border-radius: 10px;
+    border:0;
+    background-color: brown;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(228, 226, 226);
+}
+.Edit-Note-Button > button{
     cursor: pointer;
     margin-top: 17px;
     height:70px;

@@ -204,8 +204,8 @@ function ReturnNoteBlock(){
                     </div>
                 </div>
             </div>
-            <div class="Create-Note-Button">
-                <button id="Create-Note">Create Note</button>
+            <div class="Edit-Note-Button">
+                <button id="Edit-Note">Confirm changes to Note</button>
             </div>
         `;
 
@@ -471,6 +471,9 @@ AddNoteButton.addEventListener("click", () =>{
             let NoteBlock = ReturnNoteBlock();
             RightSideDiv.innerHTML = NoteBlock;
             
+            if (NoteObj.Important == true){
+                RightSideDiv.children[2].firstElementChild.checked = true;
+            }
             RightSideDiv.children[1].lastElementChild.value = HiddenTitle.innerText;
             RightSideDiv.children[3].firstElementChild.value = HiddenContent.innerText;
             RightSideDiv.children[3].firstElementChild.style.fontSize = HiddenFontSize.innerText;
@@ -480,6 +483,56 @@ AddNoteButton.addEventListener("click", () =>{
 
             
             HomePage.append(RightSideDiv);
+
+            let EditNoteButton = document.getElementById("Edit-Note");
+
+            EditNoteButton.addEventListener("click", () =>{
+                SlicedTitle = RightSideDiv.children[1].firstElementChild.value.slice(0,18);
+                if (SlicedTitle.length >= 18){
+                    SlicedTitle = SlicedTitle + "...";
+                }
+                let TitleSpan = document.createElement('span');
+                TitleSpan.innerText = SlicedTitle;
+                NoteTitle.innerText = "";
+                NoteTitle.appendChild(TitleSpan);
+                SlicedContent = RightSideDiv.children[3].firstElementChild.value.slice(0,80);
+                if (SlicedContent.length >= 80){
+                    SlicedContent = SlicedContent + " . . .";
+                }
+                NoteContent.innerText = SlicedContent;
+                HiddenTitle.innerText = RightSideDiv.children[1].firstElementChild.value;
+                HiddenContent.innerText = RightSideDiv.children[3].firstElementChild.value;
+                //=============================
+                let ImportantSpan = document.createElement('span');
+                ImportantSpan.setAttribute('id','important');
+                ImportantSpan.style.visibility = "visible";
+                ImportantCheckbox = RightSideDiv.children[2].firstElementChild.checked;
+                if (ImportantCheckbox == true && NoteObj.Important == false){
+                    NoteTitle.appendChild(ImportantSpan);
+                }else if (ImportantCheckbox == false && NoteObj.Important == true){
+                    
+                }
+                
+                var NoteObjUpdated = {
+                    Important: ImportantCheckbox,
+                    HiddenTitle: HiddenTitle.innerText,
+                    Title: SlicedTitle,
+                    HiddenContent: HiddenContent.innerText,
+                    Content: SlicedContent,
+                    TextAlign: RightSideDiv.children[3].firstElementChild.style.textAlign,
+                    FontSize: RightSideDiv.children[4].firstElementChild.children[1].children[1].innerText,
+                    FontWeight:RightSideDiv.children[3].firstElementChild.style.fontWeight
+                };
+        
+                localStorage.setItem(`Note${NotesStorageCounter}`,JSON.stringify(NoteObjUpdated));
+            });
+            //=== fim do EditNoteButton.addEventListener
+
+
+
+
+
+
         });
 
 
@@ -623,23 +676,71 @@ function MountLocalNotes(){
             document.getElementById("#Note-Textarea").innerText = HiddenContent.innerText;
             */
             
+            if (NoteObj.Important == true){
+                RightSideDiv.children[2].firstElementChild.checked = true;
+            }
             RightSideDiv.children[1].lastElementChild.value = HiddenTitle.innerText;
             RightSideDiv.children[3].firstElementChild.value = HiddenContent.innerText;
             RightSideDiv.children[3].firstElementChild.style.fontSize = HiddenFontSize.innerText;
             RightSideDiv.children[3].firstElementChild.style.textAlign = HiddenTextAlign.innerText;
             RightSideDiv.children[3].firstElementChild.style.fontWeight = HiddenFontWeight.innerText;
             RightSideDiv.children[4].firstElementChild.lastElementChild.children[1].innerText = HiddenFontSize.innerText;
+            //=========
+            
 
-            
-            
             HomePage.append(RightSideDiv);
+            
+            
+            let EditNoteButton = document.getElementById("Edit-Note");
+
+            EditNoteButton.addEventListener("click", () =>{
+                SlicedTitle = RightSideDiv.children[1].firstElementChild.value.slice(0,18);
+                if (SlicedTitle.length >= 18){
+                    SlicedTitle = SlicedTitle + "...";
+                }
+                let TitleSpan = document.createElement('span');
+                TitleSpan.innerText = SlicedTitle;
+                NoteTitle.innerText = "";
+                NoteTitle.appendChild(TitleSpan);
+                SlicedContent = RightSideDiv.children[3].firstElementChild.value.slice(0,80);
+                if (SlicedContent.length >= 80){
+                    SlicedContent = SlicedContent + " . . .";
+                }
+                NoteContent.innerText = SlicedContent;
+                HiddenTitle.innerText = RightSideDiv.children[1].firstElementChild.value;
+                HiddenContent.innerText = RightSideDiv.children[3].firstElementChild.value;
+                //=============================
+                let ImportantSpan = document.createElement('span');
+                ImportantSpan.setAttribute('id','important');
+                ImportantSpan.style.visibility = "visible";
+                ImportantCheckbox = RightSideDiv.children[2].firstElementChild.checked;
+                if (ImportantCheckbox == true && NoteObj.Important == false){
+                    NoteTitle.appendChild(ImportantSpan);
+                }else if (ImportantCheckbox == false && NoteObj.Important == true){
+                    
+                }
+                
+                var NoteObjUpdated = {
+                    Important: ImportantCheckbox,
+                    HiddenTitle: HiddenTitle.innerText,
+                    Title: SlicedTitle,
+                    HiddenContent: HiddenContent.innerText,
+                    Content: SlicedContent,
+                    TextAlign: RightSideDiv.children[3].firstElementChild.style.textAlign,
+                    FontSize: RightSideDiv.children[4].firstElementChild.children[1].children[1].innerText,
+                    FontWeight:RightSideDiv.children[3].firstElementChild.style.fontWeight
+                };
+        
+                localStorage.setItem(keys[i],JSON.stringify(NoteObjUpdated));
+        
+
+            });
+            
         });
     }
     
 
 }
-
-
 
 
 
